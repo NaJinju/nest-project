@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>App</title>
+	<link type='text/css' rel='stylesheet' href='/tailwind/tailwind.css' />
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+	<div class="w-[300px] mx-auto my-[100px]">
+		<form id="myForm" onsubmit="return onSubmit();">
+			<h1 class="text-center">Hello</h1>
+			<input type="text" id="inputId" class="block w-full h-48px bg-white rounded-[8px] border-[1px] border-[#D4D6DA] px-16px my-20px text-[15px]" placeholder="아이디를 입력해 주세요.">
+			<input type="password" id="inputPw" class="block w-full h-48px bg-white rounded-[8px] border-[1px] border-[#D4D6DA] px-16px my-20px text-[15px]" placeholder="비밀번호를 입력해 주세요.">
+
+			<button id="submitButton" type="submit" class="bg-[#2970FF] w-full h-48px leading-[48px] text-white text-16px mt-20px rounded-[8px]">
+				로그인
+			</button>
+		</form>
+	</div>
+</body>
+
+<script type="text/javascript">
+	window.onload = () => {
+		const form = document.getElementById('myForm')
+	}
+
+	function onSubmit() {
+		const form = document.getElementById('myForm')
+		const id = document.getElementById('inputId')
+		const pw = document.getElementById('inputPw')
+
+		const data = {
+			id: id.value,
+			pw: pw.value
+		}
+
+		axios.post('/submit', data)
+			.then(response => {
+				console.log("response.data --> ", response.data)
+				if(response.data.result) {
+					location.replace(`/info/${id.value}`)
+					return;
+				}
+				alert(response.data.message);
+			})
+			.catch(error => console.error(error));
+	}
+</script>
+
+</html>

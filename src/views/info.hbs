@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>App</title>
+	<link type='text/css' rel='stylesheet' href='/tailwind/tailwind.css' />
+</head>
+
+<body>
+	<div class="w-[300px] mx-auto my-[100px]">
+		<h3 class="text-20px">회원정보</h3>
+		<ul>
+			<li>
+				<span class="inline-block w-[80px] font-semibold">아이디 : </span>
+				{{ user.id }}
+			</li>
+			<li>
+				<span class="inline-block w-[80px] font-semibold">이름 : </span>
+				{{ user.name }}
+			</li>
+			<li>
+				<span class="inline-block w-[80px] font-semibold">나이 : </span>
+				{{ user.age }}
+			</li>
+			<li>
+				<span class="inline-block w-[80px] font-semibold">닉네임 : </span>
+				{{ user.nickname }}
+			</li>
+		</ul>
+	</div>
+</body>
+
+</html>
